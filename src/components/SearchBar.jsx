@@ -1,23 +1,31 @@
-import React, { useState } from "react";
+// src/components/SearchBar/SearchBar.js
+import React, { useState, useCallback } from "react";
 
-export default function SearchBar({ onSearch }) {
+
+const SearchBar = ({ onSearch }) => {
   const [term, setTerm] = useState("");
+
+  const handleTermChange = useCallback((e) => setTerm(e.target.value), []);
+  const search = useCallback(() => {
+    if (term.trim()) onSearch(term.trim());
+  }, [term, onSearch]);
+  const handleKeyDown = (e) => e.key === "Enter" && search();
+
   return (
-    <div>
+    <div className="SearchBar">
       <input
-        placeholder="Enter a song title"
+        type="text"
+        placeholder="Enter a song, artist, or album"
         value={term}
-        onChange={(e) => setTerm(e.target.value)}
+        onChange={handleTermChange}
+        onKeyDown={handleKeyDown}
       />
-      <button
-        onClick={() => {
-          console.log("[SearchBar] clicking Search with term:", term);
-          onSearch && onSearch(term);
-        }}
-      >
-        Search
+      <button className="SearchButton" type="button" onClick={search}>
+        SEARCH
       </button>
     </div>
   );
-}
+};
+
+export default SearchBar;
 

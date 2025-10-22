@@ -1,7 +1,14 @@
 // src/util/Spotify.js
-const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-// Keep this EXACT (must match your Spotify Dashboard Redirect URIs)
-const redirectUri = "http://127.0.0.1:3000/";
+const clientId =
+  process.env.REACT_APP_SPOTIFY_CLIENT_ID || "1a021c50b619446aac665131dde9aab5";
+
+// Must exactly match what’s in your Spotify Dashboard
+const redirectUri = window.location.origin.includes("github.io")
+  ? "https://seifkhila.github.io/jamming/"
+  : "https://localhost:3001/";
+
+console.log("[Spotify] redirectUri:", redirectUri);
+
 
 // Minimum scopes Jammming needs (create playlists + add tracks)
 const scopes = ["playlist-modify-public", "playlist-modify-private"];

@@ -5,8 +5,9 @@ import Playlist from "./components/Playlist";
 import Spotify from "./util/Spotify";
 // at the top of App.js
 import { MOCK_TRACKS } from "./data/mockTracks";
+import './App.css';
 
-const USE_SPOTIFY = false; // set to true later when you want to retry the API
+const USE_SPOTIFY = true; // set to true later when you want to retry the API
 
 function mockSearch(term) {
   const q = (term || "").trim().toLowerCase();

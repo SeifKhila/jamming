@@ -1,38 +1,175 @@
+
+
+:root {
+  --bg: #12182b;        
+  --panel: #1d2642;     
+  --text: #f1f4ff;      
+  --muted: #a3b3ff;     
+  --accent: #4ef2ca;    
+  --accent-hover: #67ffe0;
+  --spotify: #1db954;   
+}
+
+/* Base layout */
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Work Sans', sans-serif;
+  background: linear-gradient(160deg, #141b33 0%, #0b1220 100%);
+  color: var(--text);
+}
+
+/* Main container */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2rem 1rem 5rem;
+  gap: 2rem;
+}
+
+/* Header */
+h1 {
+  background-color: #0c1740;
+  font-size: 2.4rem;
+  color: var(--accent);
+  text-align: center;
+  letter-spacing: 1px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(78, 242, 202, 0.3);
+  margin: 2rem;
+}
+
+/* SEARCH BAR */
+.SearchBar {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.SearchBar input {
+  width: 340px;
+  padding: 0.9rem 1.2rem;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  font-size: 1rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  transition: 0.25s ease-in-out;
+}
+
+.SearchBar input:focus {
+  box-shadow: 0 0 8px var(--accent);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.SearchButton {
+  background-color: var(--accent);
+  color: #0b1220;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 0.8rem 1.8rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.SearchButton:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* PLAYLIST AND SEARCH RESULTS */
+.App-playlist {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.Playlist, .SearchResults {
+  flex: 1;
+  min-width: 320px;
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.Playlist:hover, .SearchResults:hover {
+  box-shadow: 0 0 16px rgba(78, 242, 202, 0.3);
+}
+
+/* Track list */
+.Track {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.Track:last-child {
+  border-bottom: none;
+}
+
+.Track button {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 8px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.Track button:hover {
+  background-color: var(--accent);
+  color: #0b1220;
+}
+
+/* Save to Spotify button */
+.Playlist button {
+  background-color: var(--spotify);
   color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  padding: 0.8rem 1.8rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 0 8px rgba(29,185,84,0.4);
 }
 
-.App-link {
-  color: #61dafb;
+.Playlist button:hover {
+  background-color: #1ed760;
+  box-shadow: 0 0 14px rgba(29,185,84,0.6);
+  transform: translateY(-2px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Responsive */
+@media (max-width: 900px) {
+  .App-playlist {
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  h1 {
+    font-size: 1.8rem;
+    padding: 1rem;
   }
 }
+
+
