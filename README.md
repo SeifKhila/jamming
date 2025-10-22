@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Jammming
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Jammming is a React web app that lets users search for songs, build a custom playlist, and (in live mode) save it to their Spotify account.
 
-## Available Scripts
+> This repo currently runs in **mock mode** (no login required) using local sample data.  
+> The **Spotify live mode** is already coded and can be enabled once the Spotify Dashboard + redirect URI are configured.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🎯 Purpose
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Practice React: components, props, state, unidirectional data flow.
+- Work with real-world APIs (Spotify Web API) including auth & requests.
+- Build user features: search, add/remove tracks, rename playlist, save.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧰 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React** (functional components + hooks)
+- **CSS** (light theming + background image)
+- **Spotify Web API** (search tracks, create playlist, add tracks) — live mode
+- **Create React App** (or your local setup)
+- **Node / npm**
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Features (implemented)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Search bar accepts a term and shows matching tracks (mock mode).
+- Results list shows **name / artist / album**.
+- Add a track to the playlist with **+**, no duplicates.
+- Remove a track from the playlist with **−**.
+- Rename playlist title inline.
+- “Save to Spotify”:
+  - **Mock mode**: shows a confirmation alert and resets the playlist.
+  - **Live mode**: creates a playlist in your Spotify account and adds the tracks (requires access token).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🗂️ Project Structure (key files)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+src/
+App.js
+index.css
+data/
+mockTracks.js
+util/
+Spotify.js # auth + search + save playlist (live mode)
+components/
+SearchBar.jsx
+SearchResults.jsx
+TrackList.jsx
+Track.jsx
+Playlist.jsx
+assets/
+background.png # custom background image
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🧪 Modes
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Mock Mode (default)
+- No login required.
+- Local dataset used for searching (`src/data/mockTracks.js`).
+- In `App.js`, the flag is:
+  ```js
+  const USE_SPOTIFY = false;
